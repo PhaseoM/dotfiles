@@ -19,13 +19,17 @@ return {
 				-- 'stylua', -- lua formatter; Already installed via Mason
 				-- 'ruff', -- Python linter and formatter; Already installed via Mason
 				"clang-format",
+				"clang-tidy",
 			},
 			automatic_installation = true,
 		})
 
-		local sources = {
+	local sources = {
 			diagnostics.checkmake,
-			formatting.clang_format,
+			diagnostics.clang_tidy,
+			formatting.clang_format.with({
+				filetypes = {"c","cpp","h","hpp"},
+			}),
 			formatting.prettier.with({ filetypes = { "html", "json", "yaml", "markdown" } }),
 			formatting.stylua,
 			formatting.shfmt.with({ args = { "-i", "4" } }),
@@ -33,7 +37,6 @@ return {
 			require("none-ls.formatting.ruff").with({ extra_args = { "--extend-select", "I" } }),
 			require("none-ls.formatting.ruff_format"),
 		}
-
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 		null_ls.setup({
 			-- debug = true, -- Enable debug mode. Inspect logs with :NullLsLog.

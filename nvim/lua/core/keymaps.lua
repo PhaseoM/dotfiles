@@ -28,6 +28,9 @@ vim.keymap.set("n", "<leader>sn", "<cmd>noautocmd w <CR>", opts)
 -- select all
 vim.keymap.set("n", "<C-a>", "gg0VG", opts)
 
+-- match corresponding bracket
+vim.keymap.set({ "n", "v" }, "<M-;>", "%", opts)
+
 -- delete single character without copying into register
 vim.keymap.set("n", "x", '"_x', opts)
 

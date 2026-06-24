@@ -1,5 +1,5 @@
 vim.wo.number = true -- Make line numbers default
-vim.o.relativenumber = true
+vim.o.relativenumber = false
 vim.o.clipboard = "unnamedplus"
 vim.o.wrap = false -- display lines as one long line
 vim.o.linebreak = true -- companion to wrap don't split words
